@@ -1,0 +1,26 @@
+<h2 class = "text-center">Robot List</h2>
+
+<input class = "form=control" type="text" name="robotId" [(ngModel)]="filterText" (ngModelChange)="Filter()"
+placeholder="Filter by Robot Id">
+<button (click) ="resetFilter()" > Reset Filter</button> 
+
+<table class = "table table-striped">
+<thead>
+    <tr>
+<th (click) = "sort('robotId')">Robot Id&nbsp;<i class="fa fa-sort"></i></th>
+<th (click) = "sort('batteryLevel')">Battery Level&nbsp;<i class="fa fa-sort"></i></th>
+<th (click) = "sort('y')">Current Y coordinate&nbsp;<i class="fa fa-sort"></i></th>
+<th (click) = "sort('x')">Current X coordinate&nbsp;<i class="fa fa-sort"></i></th>
+    </tr>
+</thead> 
+<tbody>
+    <tr *ngFor = "let robot of robots 
+    | orderBy: orderHeader : isDescOrder" 
+    >
+        <td> {{robot.robotId}}</td>
+        <td> {{robot.batteryLevel}}</td>
+        <td> {{robot.y}}</td>
+        <td> {{robot.x}}</td>
+    </tr>
+</tbody>
+</table>
